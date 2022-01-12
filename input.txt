@@ -1,0 +1,7 @@
+a 1 bulbasaur 0.7 6.9 grass poison
+a 4 charmander 0.6 8.5 fire
+a 7 squirtle 0.5 9.0 water
+a 25 pikachu 0.4 6.0 electric
+a 10 caterpie 0.3 2.9 bug
+a 13 weedle 0.3 3.2 bug poison
+a 16 pidgey 0.3 1.8 normal flying
