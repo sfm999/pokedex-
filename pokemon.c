@@ -43,6 +43,7 @@ Pokemon new_pokemon(int pokemon_id, char *name, double height,
     return new_pkmn;
 }
 
+
 int pokemon_id(Pokemon pokemon) {
     return pokemon->pokemon_id;
 }
