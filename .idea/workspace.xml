@@ -12,12 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70303784-6e76-4c85-9423-e4f045583b62" name="Changes" comment="first commit. Just putting all the files up. I did do the add_pokemon() function but still need to implement the functionality for testing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pokedex.c" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pokedex.exe" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex.exe" afterDir="false" />
-    </list>
+    <list default="true" id="70303784-6e76-4c85-9423-e4f045583b62" name="Changes" comment="first commit. Just putting all the files up. I did do the add_pokemon() function but still need to implement the functionality for testing" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
