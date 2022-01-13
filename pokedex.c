@@ -41,6 +41,7 @@
 // You may change or delete the head field.
 struct pokedex {
     struct dexnode *head;
+    struct dexnode *current;
 };
 
 
@@ -86,6 +87,7 @@ Pokedex new_pokedex(void) {
     // Set the head of the linked list to be NULL.
     // (i.e. set the Pokedex to be empty)
     pokedex->head = NULL;
+    pokedex->current = NULL;
 
     // TODO: Add your own code here.
 
@@ -98,11 +100,15 @@ Pokedex new_pokedex(void) {
 // pointer to point to the specified pokemon, and return a pointer to
 // the allocated memory.
 static struct dexnode *create_new_dexnode(Pokemon pokemon) {
-    struct dexnode *new_node = malloc(sizeof(struct dexnode));
-    assert(new_node != NULL);
-    new_node->pokemon = pokemon;
-    new_node->next = NULL;
-    return new_node;
+    // Allocate memory to new entry
+    struct dexnode *new_entry = malloc(sizeof(struct dexnode));
+    // Assert that the malloc was successful
+    assert(new_entry != NULL);
+    // Set the new values of the dexnode from the given pokemon
+    new_entry->pokemon = pokemon;
+    new_entry->next = NULL;
+    // Return the new pokedex entry
+    return new_entry;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -115,6 +121,7 @@ void add_pokemon(Pokedex pokedex, Pokemon pokemon) {
     // Handle empty list case
     if(pokedex->head == NULL) {
         pokedex->head = create_new_dexnode(pokemon);
+        pokedex->current = pokedex->head;
         return;
     }
 
@@ -133,34 +140,64 @@ void add_pokemon(Pokedex pokedex, Pokemon pokemon) {
 
 // Print out all of the Pokemon in the Pokedex.
 void print_pokedex(Pokedex pokedex) {
-    struct dexnode* curr = pokedex->head;
-    while(curr->next != NULL) {
-        printf("\nPokemon\nID: %d \tName: %s \tWeight: %.1f \tHeight: %.1f \tTypes: ", pokemon_id(curr->pokemon),
-               pokemon_name(curr->pokemon), pokemon_weight(curr->pokemon), pokemon_height(curr->pokemon));
-        printf("%s ", pokemon_first_type(curr->pokemon));
-        if(pokemon_second_type(curr->pokemon) != '\0') {
-            printf("%s\n", pokemon_second_type(curr->pokemon));
+
+    if(pokedex->head == NULL) {
+        return;
+    }else if(pokedex->head->next == NULL) {
+        printf("Pokemon\nID: %d \tName: %s \tWeight: %.1f \tHeight: %.1f ", pokemon_id(pokedex->head->pokemon),
+               pokemon_name(pokedex->head->pokemon), pokemon_weight(pokedex->head->pokemon), pokemon_height(pokedex->head->pokemon));
+        pokemon_type first = pokemon_first_type(pokedex->head->pokemon), second = pokemon_second_type(pokedex->head->pokemon);
+        if(second == NONE_TYPE) {
+            printf("Type: %s\n", type_code_to_str(first));
+        }else{
+            printf("Type: %s %s\n", type_code_to_str(first), type_code_to_str(second));
         }
     }
+    struct dexnode* curr = pokedex->head;
+    while(curr->next != NULL) {
+        // The actual printout
+        printf("Pokemon Entry no. %d\nID: %d\nName: %s\nWeight: %.1f\nHeight: %.1f\n", pokemon_id(curr->pokemon),
+               pokemon_id(curr->pokemon), pokemon_name(curr->pokemon),
+               pokemon_weight(curr->pokemon), pokemon_height(curr->pokemon));
+
+        // Get the types and check them to see if valid entries. Could be NONE_TYPE
+        pokemon_type first = pokemon_first_type(pokedex->head->pokemon), second = pokemon_second_type(pokedex->head->pokemon);
+        if(second == NONE_TYPE) {
+            printf("Type: %s\n\n", type_code_to_str(first));
+        }else{
+            printf("Type: %s %s\n\n", type_code_to_str(first), type_code_to_str(second));
+        }
+        // Continue iterating
+        curr = curr->next;
+    }
+    return;
 }
 
 // Print out the details of the currently selected Pokemon.
 void detail_current_pokemon(Pokedex pokedex) {
-    printf("\nPokemon\nID: %d \tName: %s \tWeight: %.1f \tHeight: %.1f \tTypes: ",
-           pokemon_id(pokedex->head->pokemon), pokemon_name(pokedex->head->pokemon),
-           pokemon_weight(pokedex->head->pokemon), pokemon_height(pokedex->head->pokemon));
+    printf("Pokemon Entry no. %d\nID: %d\nName: %s\nWeight: %.1f\nHeight: %.1f\n", pokemon_id(pokedex->current->pokemon),
+           pokemon_id(pokedex->current->pokemon), pokemon_name(pokedex->current->pokemon),
+           pokemon_weight(pokedex->current->pokemon), pokemon_height(pokedex->current->pokemon));
+
+    // Get the types and check them to see if valid entries. Could be NONE_TYPE
+    pokemon_type first = pokemon_first_type(pokedex->current->pokemon), second = pokemon_second_type(pokedex->current->pokemon);
+    if(second == NONE_TYPE)
+        printf("Type: %s\n\n", type_code_to_str(first));
+    else
+        printf("Type: %s %s\n\n", type_code_to_str(first), type_code_to_str(second));
+
+    return;
 }
 
 // Return the currently selected Pokemon.
 Pokemon get_current_pokemon(Pokedex pokedex) {
-    fprintf(stderr, "exiting because you have not implemented the get_current_pokemon function\n");
-    exit(1);
+    return pokedex->current->pokemon;
 }
 
 // Change the currently selected Pokemon to be the next Pokemon in the Pokedex.
 void next_pokemon(Pokedex pokedex) {
-    fprintf(stderr, "exiting because you have not implemented the next_pokemon function\n");
-    exit(1);
+    if(pokedex->current->next != NULL)
+        pokedex->current = pokedex->current->next;
 }
 
 // Change the currently selected Pokemon to be the previous Pokemon in the Pokedex.
