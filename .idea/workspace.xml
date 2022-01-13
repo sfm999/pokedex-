@@ -12,7 +12,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70303784-6e76-4c85-9423-e4f045583b62" name="Changes" comment="Had issues with it printing out. Fixed the errors. cbf to explain">
+    <list default="true" id="70303784-6e76-4c85-9423-e4f045583b62" name="Changes" comment="Had issues with it printing out. Fixed the errors. cbf to explain. Round two">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pokedex.c" beforeDir="false" afterPath="$PROJECT_DIR$/pokedex.c" afterDir="false" />
     </list>
@@ -102,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642034590505</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Had issues with it printing out. Fixed the errors. cbf to explain. Round two">
+      <created>1642034720147</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642034720147</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +130,7 @@
     <MESSAGE value="first commit. Just putting all the files up. I did do the add_pokemon() function but still need to implement the functionality for testing" />
     <MESSAGE value="finished off add_pokemon(), detail_current_pokemon(), and get_current_pokemon().&#10;Committing for first autotest" />
     <MESSAGE value="Had issues with it printing out. Fixed the errors. cbf to explain" />
-    <option name="LAST_COMMIT_MESSAGE" value="Had issues with it printing out. Fixed the errors. cbf to explain" />
+    <MESSAGE value="Had issues with it printing out. Fixed the errors. cbf to explain. Round two" />
+    <option name="LAST_COMMIT_MESSAGE" value="Had issues with it printing out. Fixed the errors. cbf to explain. Round two" />
   </component>
 </project>
