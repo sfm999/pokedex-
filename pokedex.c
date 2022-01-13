@@ -144,8 +144,8 @@ void print_pokedex(Pokedex pokedex) {
     if(pokedex->head == NULL) {
         return;
     }else if(pokedex->head->next == NULL) {
-        printf("ID: %d \tName: %s \tWeight: %.1f \tHeight: %.1f ", pokemon_id(pokedex->head->pokemon),
-               pokemon_name(pokedex->head->pokemon), pokemon_weight(pokedex->head->pokemon), pokemon_height(pokedex->head->pokemon));
+        printf("ID: %d\nName: %s\nHeight: %f m\nWeight: %f kg\n", pokemon_id(pokedex->current->pokemon), pokemon_name(pokedex->current->pokemon),
+               pokemon_height(pokedex->current->pokemon), pokemon_weight(pokedex->current->pokemon));
         pokemon_type first = pokemon_first_type(pokedex->head->pokemon), second = pokemon_second_type(pokedex->head->pokemon);
         if(second == NONE_TYPE) {
             printf("Type: %s\n", type_code_to_str(first));
@@ -156,8 +156,8 @@ void print_pokedex(Pokedex pokedex) {
     struct dexnode* curr = pokedex->head;
     while(curr->next != NULL) {
         // The actual printout
-        printf("ID: %d \tName: %s \tWeight: %f \tHeight: %f ", pokemon_id(curr->pokemon), pokemon_name(curr->pokemon),
-               pokemon_weight(curr->pokemon), pokemon_height(curr->pokemon));
+        printf("ID: %d\nName: %s\nHeight: %f m\nWeight: %f kg\n", pokemon_id(pokedex->current->pokemon), pokemon_name(pokedex->current->pokemon),
+               pokemon_height(pokedex->current->pokemon), pokemon_weight(pokedex->current->pokemon));
 
         // Get the types and check them to see if valid entries. Could be NONE_TYPE
         pokemon_type first = pokemon_first_type(pokedex->head->pokemon), second = pokemon_second_type(pokedex->head->pokemon);
@@ -174,8 +174,8 @@ void print_pokedex(Pokedex pokedex) {
 
 // Print out the details of the currently selected Pokemon.
 void detail_current_pokemon(Pokedex pokedex) {
-    printf("ID: %d\nName: %s\nWeight: %f\nHeight: %f\n", pokemon_id(pokedex->current->pokemon), pokemon_name(pokedex->current->pokemon),
-           pokemon_weight(pokedex->current->pokemon), pokemon_height(pokedex->current->pokemon));
+    printf("ID: %d\nName: %s\nHeight: %f m\nWeight: %f kg\n", pokemon_id(pokedex->current->pokemon), pokemon_name(pokedex->current->pokemon),
+           pokemon_height(pokedex->current->pokemon), pokemon_weight(pokedex->current->pokemon));
 
     // Get the types and check them to see if valid entries. Could be NONE_TYPE
     pokemon_type first = pokemon_first_type(pokedex->current->pokemon), second = pokemon_second_type(pokedex->current->pokemon);
